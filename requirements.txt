@@ -2,7 +2,7 @@ streamlit
 pandas
 numpy
 joblib
-scikit-learn
+scikit-learn==1.2.2
 xgboost
 lightgbm
-imbalanced-learn
+imbalanced-learn==0.10.1
