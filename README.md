@@ -1,9 +1,9 @@
 # 🩺 Diabetes Health Risk Predictor
 ### **An Ensemble Learning Approach to Chronic Disease Prediction**
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_svg.svg)](YOUR_STREAMLIT_URL_HERE)
-[![Kaggle Notebook](https://img.shields.io/badge/Kaggle-Notebook-blue?logo=kaggle)](YOUR_KAGGLE_URL_HERE)
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](YOUR_GITHUB_URL_HERE)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_svg.svg)](https://diabetes-risk-predictor-wssdqdmkfwd85rhwg9cjgw.streamlit.app/)
+[![Kaggle Notebook](https://img.shields.io/badge/Kaggle-Notebook-blue?logo=kaggle)](https://www.kaggle.com/code/rajugupta319/notebooka515ed2526)
+
 
 ---
 
@@ -12,6 +12,7 @@ This project leverages Machine Learning to estimate an individual's risk of diab
 
 Unlike simple binary classifiers, this system uses a **Soft-Voting Ensemble** to provide a nuanced, percentage-based risk profile across three categories: **Healthy**, **Pre-Diabetic**, and **Diabetic**.
 
+Along with that it also give a advice to improve.
 ---
 
 ## 🛠️ Technical Stack
