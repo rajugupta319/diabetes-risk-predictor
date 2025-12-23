@@ -37,6 +37,26 @@ age_mapping = {
     "70-74": 11, "75-79": 12, "80 or older": 13
 }
 
+income_mapping_inr = {
+    "Less than ₹8 Lakhs": 1,
+    "₹8 Lakhs - ₹12 Lakhs": 2,
+    "₹12 Lakhs - ₹16 Lakhs": 3,
+    "₹16 Lakhs - ₹20 Lakhs": 4,
+    "₹20 Lakhs - ₹28 Lakhs": 5,
+    "₹28 Lakhs - ₹40 Lakhs": 6,
+    "₹40 Lakhs - ₹60 Lakhs": 7,
+    "₹60 Lakhs or more": 8
+}
+
+edu_mapping = {
+    "Never attended school / Kindergarten": 1,
+    "Elementary (Grades 1-8)": 2,
+    "Some High School (Grades 9-11)": 3,
+    "High School Graduate (GED)": 4,
+    "Some College / Technical School": 5,
+    "College Graduate": 6
+}
+
 def get_user_inputs(features):
     inputs = {}
     
@@ -52,14 +72,31 @@ def get_user_inputs(features):
             )
             # Map the string label back to the numeric value (1-13) for the model
             inputs['Age'] = age_mapping[selected_age_label]
-        # --- INSERTED FIX END ---
+       
+        elif col == 'Education':
+            selected_edu_label = st.sidebar.selectbox(
+                "Education Level", 
+                options=list(edu_mapping.keys()),
+                help="Select your highest level of schooling"
+            )
+            inputs['Education'] = edu_mapping[selected_edu_label]
+
+        
+        elif col == 'Income':
+            selected_income_label = st.sidebar.selectbox(
+                "Annual Household Income (₹)", 
+                options=list(income_mapping_inr.keys()),
+                help="Select your approximate household income range"
+            )
+            inputs['Income'] = income_mapping_inr[selected_income_label]
             
         elif col == 'GenHlth':
-            inputs[col] = st.sidebar.select_slider(
-                "General Health Rating", 
-                options=[1, 2, 3, 4, 5],
-                help="1: Excellent, 2: Very Good, 3: Good, 4: Fair, 5: Poor"
-            )
+             inputs[col] = st.sidebar.select_slider(
+            "General Health Rating", 
+            options=[1, 2, 3, 4, 5],
+        # Maps the numbers 1-5 to words directly on the slider
+             format_func=lambda x: {1: "Excellent", 2: "Very Good", 3: "Good", 4: "Fair", 5: "Poor"}[x]
+    )
         elif col in ['HighBP', 'HighChol', 'Smoker', 'HeartDiseaseorAttack', 'PhysActivity', 'Fruits', 'Veggies', 'HvyAlcoholConsump', 'AnyHealthcare', 'NoDocbcCost', 'DiffWalk', 'CholCheck']:
             # Clean up the display labels for a better UI
             display_label = col.replace('HeartDiseaseorAttack', 'Heart Disease History').replace('HighBP', 'High Blood Pressure')
